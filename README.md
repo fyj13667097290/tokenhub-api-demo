@@ -1,0 +1,100 @@
+# TokenHub API Demo 🚀
+
+> **Affordable AI API for developers worldwide. No Chinese phone number required.**
+>
+> 🔗 **[t-hub.cc](https://t-hub.cc)** — Get your API token in 1 minute.
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.8%2B-green.svg)](https://www.python.org/)
+
+## What is TokenHub?
+
+TokenHub is a **DeepSeek API alternative** and **multi-model AI API relay** that gives you:
+
+- ✅ **No phone verification** — bypass the Chinese phone number requirement
+- ✅ **Pay-as-you-go** — only pay for what you use, no subscription
+- ✅ **OpenAI-compatible API** — drop-in replacement, just change `base_url`
+- ✅ **Multiple models** — DeepSeek V3, GLM-4-Flash, MiniMax, and more coming
+
+## Available Models
+
+| Model | Type | Best For | Pricing |
+|-------|------|----------|---------|
+| `deepseek-v3` | Chat | General purpose, coding, reasoning | $0.27/M tokens |
+| `glm-4-flash` | Chat | Fast responses, lightweight tasks | $0.01/M tokens |
+| `minimax` | Chat | Creative writing, storytelling | $0.20/M tokens |
+
+> More models coming soon! (GPT-4o, Claude, Gemini — join the waitlist)
+
+## Quick Start (30 seconds)
+
+### 1. Get your API Token
+Visit **[t-hub.cc](https://t-hub.cc)** → Register → Create Token → Copy it.
+
+### 2. Install
+```bash
+pip install openai
+```
+
+### 3. Use in your own code
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://t-hub.cc/v1",
+    api_key="YOUR_TOKEN_HUB_API_KEY"
+)
+
+response = client.chat.completions.create(
+    model="deepseek-v3",
+    messages=[{"role": "user", "content": "Hello, world!"}]
+)
+print(response.choices[0].message.content)
+```
+
+**That's it!** Your existing OpenAI SDK code works with TokenHub — just change `base_url` and `api_key`.
+
+## Why TokenHub?
+
+### The Problem
+Many powerful AI APIs (DeepSeek, GLM, MiniMax) require a **Chinese phone number** to register. Developers outside China are locked out.
+
+### Our Solution
+TokenHub acts as a **relay** — we handle the upstream registration, you get a clean OpenAI-compatible API. No phone, no hassle, no minimum commitment.
+
+## Features
+
+- 🔌 **OpenAI SDK compatible** — works with any OpenAI SDK client
+- 📊 **Usage dashboard** — track your token consumption in real-time
+- 🔑 **Multiple API tokens** — create separate tokens for different projects
+- 🛡️ **Rate limiting** — built-in protection against abuse
+
+## FAQ
+
+**Q: Is this legal?**
+A: Yes. We are an authorized API relay service. You pay us, we pay the upstream providers.
+
+**Q: How is this different from OpenRouter?**
+A: OpenRouter charges a markup on every request. We offer **wholesale pricing** — you pay close to the original API cost.
+
+**Q: What about data privacy?**
+A: We do NOT store your prompts or completions. Data passes through our servers in transit only.
+
+**Q: Can I use this in production?**
+A: Absolutely. TokenHub is built for production workloads with 99.9% uptime SLA.
+
+## Community
+
+- 🌐 **Website**: [t-hub.cc](https://t-hub.cc)
+- 📝 **Blog**: [dev.to/tokenhub](https://dev.to/tokenhub)
+- 🐦 **Twitter**: [@TokenHubAPI](https://twitter.com/TokenHubAPI) *(coming soon)*
+
+## License
+
+MIT © TokenHub
+
+---
+
+⭐ **Star this repo** if you find it useful! It helps others discover affordable AI APIs.
+
+*Keywords: DeepSeek API alternative, cheap AI API, DeepSeek without Chinese phone, GLM API, MiniMax API, AI API relay, OpenAI compatible API, affordable LLM API*

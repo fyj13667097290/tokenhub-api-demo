@@ -169,6 +169,17 @@ A: Absolutely. TokenHub is built for production workloads with 99.9% uptime SLA.
 
 
 
+
+## Pricing (June 2026 - 54% OFF!)
+
+| Plan | Price | Tokens | Per Million |
+|------|-------|--------|-------------|
+| Starter | /usr/bin/bash.69 | 1M | /usr/bin/bash.69/M |
+| Basic | .00 | 15M | /usr/bin/bash.47/M |
+| Pro | 6.00 | 70M | /usr/bin/bash.37/M |
+| Max | 9.00 | 300M | /usr/bin/bash.26/M |
+
+Credit card via LemonSqueezy. PayPal + USDT supported.
 ## Community
 
 

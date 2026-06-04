@@ -1,21 +1,8 @@
+# TokenHub API Demo
 
-# TokenHub API Demo 🚀
-
-
-
-> **Affordable AI API for developers worldwide. No Chinese phone number required.**
-
+> **The 5 best Chinese AI models, one API key. No Chinese phone required.**
 >
-
-> 🔗 **[t-hub.cc](https://t-hub.cc)** — Get your API token in 1 minute.
-
-
-
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-
-[![Python](https://img.shields.io/badge/python-3.8%2B-green.svg)](https://www.python.org/)
-
-
+> [t-hub.cc](https://t-hub.cc) | [Product Hunt](https://www.producthunt.com/products/tokenhub?launch=tokenhub) | [Dev.to](https://dev.to/tokenhub)
 
 ## What is TokenHub?
 

@@ -138,9 +138,9 @@ A: Yes. We are an authorized API relay service. You pay us, we pay the upstream 
 
 
 
-**Q: How is this different from OpenRouter?**
+**Q: How is this different from ?**
 
-A: OpenRouter charges a markup on every request. We offer **wholesale pricing** — you pay close to the original API cost.
+A:  charges a markup on every request. We offer **wholesale pricing** — you pay close to the original API cost.
 
 
 

@@ -8,7 +8,7 @@
 
 
 
-TokenHub is a **DeepSeek API alternative** and **multi-model AI API relay** that gives you:
+TokenHub is a **400-model AI API relay (DeepSeek, Llama 4, Mistral, Qwen, GLM)** and **multi-model AI API relay** that gives you:
 
 
 
@@ -195,4 +195,4 @@ MIT © TokenHub
 
 
 
-*Keywords: DeepSeek API alternative, cheap AI API, DeepSeek without Chinese phone, GLM API, MiniMax API, AI API relay, OpenAI compatible API, affordable LLM API*
+*Keywords: 400-model AI API relay (DeepSeek, Llama 4, Mistral, Qwen, GLM), cheap AI API, DeepSeek without Chinese phone, GLM API, MiniMax API, AI API relay, OpenAI compatible API, affordable LLM API*

@@ -195,4 +195,20 @@ MIT © TokenHub
 
 
 
-*Keywords: 400-model AI API relay (DeepSeek, Llama 4, Mistral, Qwen, GLM), cheap AI API, DeepSeek without Chinese phone, GLM API, MiniMax API, AI API relay, OpenAI compatible API, affordable LLM API*
+*
+
+---
+
+## Become an Agent
+
+Earn commissions by referring customers to TokenHub. Zero cost to join. No inventory. No customer support needed.
+
+- 10% commission on every order
+- Real-time tracking via dashboard
+- Monthly payout via PayPal/WeChat/Alipay
+
+**Contact:** 547178675@qq.com
+
+---
+
+**Keywords:** DeepSeek API, Qwen API, GLM API, Llama 4 API, Mistral API, AI API relay, cheap AI API, OpenAI alternative, no VPN AI

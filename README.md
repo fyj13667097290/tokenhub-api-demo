@@ -1,132 +1,180 @@
-# TokenHub - AI API Relay
+# TokenHub — AI大模型聚合平台 🚀
 
-> One API key. 518 AI models. No Chinese phone. No VPN.
+> **500+ AI Models. One API Key. Chat + Image + Video.**
+>
+> 🔗 **[t-hub.cc](https://t-hub.cc)** | 🎮 **[Playground](https://t-hub.cc/playground)**
 
-[![Status](https://img.shields.io/badge/status-live-brightgreen)]()
-[![Models](https://img.shields.io/badge/models-518-blue)]()
-[![API](https://img.shields.io/badge/API-OpenAI%20compatible-orange)]()
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Models](https://img.shields.io/badge/models-500%2B-purple.svg)](https://t-hub.cc/playground)
+
+---
 
 ## What is TokenHub?
 
-TokenHub is an AI API aggregation platform that gives you access to **518 models** from 30+ providers through a single OpenAI-compatible endpoint.
+TokenHub is an **all-in-one AI aggregation platform** — browse 500+ models, generate text, images, and videos from a single web interface or API.
 
-Built after getting scammed twice buying API keys on Telegram. Running on $12/month VPS servers. Solo developer.
+| Feature | Description |
+|---------|-------------|
+| 💬 **Chat** | 500+ models in one interface. GPT, Claude, DeepSeek, GLM, Gemini, Mistral, Llama, Qwen... |
+| 🎨 **Image Generation** | GPT-Image 2, Gemini Image. Multiple styles: anime, oil painting, cyberpunk, watercolor. |
+| 🎬 **Video Generation** | Text-to-video via Minimax API. 5-10 second videos in 2-3 minutes. |
+| 🔑 **One Key** | Chat + Image + Video — all from a single API key. |
+| 🌍 **No Chinese ID** | No phone verification, no Alipay, no real-name authentication required. |
+| 🆓 **Free Models** | 30 free calls/day on GLM-5.1, Gemma 4, Kimi K2.6, Mistral Small, etc. |
 
-## Available Models (518 total)
-
-### GPT & Claude (via ofox)
-- GPT-5.5, GPT-5.4, GPT-4o, GPT-4.1, GPT-5
-- Claude Opus 4.8, Claude Sonnet 4.6, Claude Haiku 4.5
-
-### DeepSeek (Direct)
-- deepseek-chat, deepseek-v4-pro, deepseek-v4-flash, deepseek-r1
-
-### Chinese Models (via ofox)
-- Qwen 3.7 Max, Qwen 3.7 Plus, Qwen Turbo, Qwen Max
-- GLM-5.1, GLM-5, GLM-4.7, MiniMax M2.7
-
-### OpenRouter (340+ models)
-- Llama 4 Maverick, Llama 4 Scout
-- Mistral Large, Codestral
-- NVIDIA Nemotron 550B
-- Google Gemma 4 31B, Gemini 2.5 Flash
-- Perplexity Sonar Pro
-- Cohere Command R+, AI21 Jamba, xAI Grok
-- And 300+ more...
-
-### Free Models (9 models, zero cost)
-- Gemma 4 31B, Gemini 2.5 Flash Lite
-- Kimi K2.6, GLM-5.1, MiniMax M2.5/M2.7
-- Mistral Small, Codestral
-
-## Pricing
-
-| Plan | Price | Tokens | Per Million |
-|------|-------|--------|-------------|
-| Starter | $0.69 | 1M | $0.69/M |
-| Basic | $7.00 | 15M | $0.47/M |
-| Pro | $26.00 | 70M | $0.37/M |
-| Max | $89.00 | 300M | $0.30/M |
-
-Transparent pricing: cost + 30% margin. No hidden multipliers.
-
-WeChat, Alipay, USDT, and credit cards accepted.
+---
 
 ## Quick Start
+
+### Option A: Web Playground (no code)
+Open **[https://t-hub.cc/playground](https://t-hub.cc/playground)** → Enter API Key → Start using 500+ models instantly.
+
+### Option B: API (OpenAI-compatible)
+
+```bash
+pip install openai
+```
 
 ```python
 from openai import OpenAI
 
 client = OpenAI(
     base_url="https://t-hub.cc/v1",
-    api_key="your-api-key"
+    api_key="YOUR_TOKEN_HUB_API_KEY"
 )
 
+# Chat
 response = client.chat.completions.create(
     model="gpt-4o",
     messages=[{"role": "user", "content": "Hello!"}]
 )
 print(response.choices[0].message.content)
+
+# Image
+response = client.images.generate(
+    model="gpt-image-2",
+    prompt="A cute cat on a sunny beach",
+    size="1024x1024"
+)
+print(response.data[0].url)
+
+# Video (via dedicated endpoint)
+import requests
+resp = requests.post("https://t-hub.cc/video-api/generate", json={
+    "prompt": "A drone flyover of a mountain lake at sunset",
+    "duration": 5,
+    "api_key": "YOUR_TOKEN_HUB_API_KEY"
+})
+print(resp.json())  # {job_id: "...", status: "queued"}
 ```
 
-```bash
-curl https://t-hub.cc/v1/chat/completions   -H "Authorization: Bearer YOUR_API_KEY"   -H "Content-Type: application/json"   -d '{"model":"deepseek-chat","messages":[{"role":"user","content":"Hi"}]}'
-```
+---
+
+## Pricing
+
+| Plan | Price | Tokens | Free Model Calls/Day | Paid Models |
+|------|-------|--------|:---:|:---:|
+| **Starter** | $0.10/mo | 1M | 30 | ❌ |
+| **Basic** | $7/mo | 15M | 150 | ❌ |
+| **Pro** | $26/mo | 70M | 500 | ✅ |
+| **Max** | $89/mo | 300M | 1000 | ✅ |
+
+- **Free models**: GLM-5.1, Gemma 4 31B, Gemma 4 26B, Kimi K2.6, MiniMax M2.5/M2.7, Mistral Small, Codestral — 30 calls/day on Starter
+- **Payment**: Credit Card, WeChat Pay, Alipay, USDT
+- **No hidden fees**: Token consumption = model_price × group_ratio. All pricing transparent at `/pricing-calc`
+
+---
 
 ## Architecture
 
 ```
-Client (OpenAI SDK)
-    |
-    v
-Cloudflare (DDoS protection + CDN)
-    |
-    v
-Nginx (HTTPS + rate limiting)
-    |
-    v
-One API (Go gateway, port 3000)
-    |
-    +--> ofox (GPT, Claude, Qwen, GLM, MiniMax)
-    +--> DeepSeek Direct (deepseek models)
-    +--> OpenRouter (340+ models, filtered)
-    |
-    v
-Flask Payment System
-    +--> LemonSqueezy (credit cards)
-    +--> WeChat Pay / Alipay
-    +--> USDT (TRC20)
+Browser (t-hub.cc)
+    │
+    ├─ /playground    → Static HTML/JS (SPA, bilingual CN/EN)
+    ├─ /v1/           → Rate Limiter (:5095) → One API (:3000)
+    ├─ /video-api/    → Video Service (:5097) → Minimax/Kling API
+    ├─ /pay/ /dashboard/ → Flask App (:5000)
+    ├─ /monitor-api/  → Monitor Service (:5096)
+    └─ /admin/ /ops/  → Flask Admin (:5099/:5098)
 ```
 
-## Features
-
-- OpenAI SDK compatible - drop-in replacement
-- Model ratio system for fair pricing
-- Real-time usage statistics dashboard
-- 7-day free trial for new users
-- Token management with per-user quota
-- Channel monitoring with auto-refresh balances
-
-## Links
-
-- Website: [t-hub.cc](https://t-hub.cc)
-- Dashboard: [t-hub.cc/dashboard](https://t-hub.cc/dashboard)
-- Stats: [t-hub.cc/stats](https://t-hub.cc/stats)
-- Order Lookup: [t-hub.cc/pay/order](https://t-hub.cc/pay/order)
-
-## Status
-
-- 2 paying customers (week 3)
-- 518 models online
-- $12/month infrastructure cost
-- Built and maintained by one person
+| Component | Tech | Port | Purpose |
+|-----------|------|:---:|---------|
+| **One API** | Go | 3000 | Model routing, token management, quota tracking |
+| **Flask App** | Python | 5000 | Payment, dashboard, pricing calculator |
+| **Rate Limiter** | Python | 5095 | Free model daily call limits, 429 enforcement |
+| **Monitor Service** | Python | 5096 | System metrics, model pricing sync |
+| **Video Service** | Python | 5097 | Async video generation with billing integration |
+| **Nginx** | Nginx | 80/443 | SSL termination, reverse proxy, rate limiting |
+| **Database** | SQLite | — | Lightweight, no external DB dependency |
 
 ---
 
-**Found a bug? Want a model added?** Open an issue or reach out on [Twitter/X @TokenHub](https://x.com/TokenHub).
+## Key Features
 
-Updated via Ops Center 2026-06-21 03:06 UTC
+### 🔐 Rate Limiting
+Free models are limited per plan tier (30-1000 calls/day). Exceeding the limit returns HTTP 429. Paid models are unlimited (token consumption only).
 
-Updated via Ops Center 2026-06-22 02:03 UTC
+### 💰 Unified Billing
+Text, image, and video all billed through the same token system. Pricing controlled by a centralized profit-margin calculator (`pricing_calc_v2.py`). Change one number, all model ratios + video pricing update automatically.
 
-Updated via Ops Center 2026-06-22 15:16 UTC
+### 🎬 Video Generation
+- Async submission → background polling → auto-refund on failure
+- Supports Minimax Video API and Kling API
+- Token cost: configurable per second, linked to global profit margin
+- Full billing integration: validate key → check quota → deduct → generate → refund on fail
+
+### 🌍 Bilingual
+Full Chinese/English toggle. Language preference saved to localStorage.
+
+### 📊 Admin Dashboard
+Monitor system health, channel status, model usage statistics, revenue tracking at `/monitor`, `/stats`, `/admin`.
+
+---
+
+## Deployment
+
+**Server**: Vultr VPS (1 vCPU, 1GB RAM, 3GB swap) — $6/month
+**OS**: Ubuntu 22.04
+**Domain**: t-hub.cc (Cloudflare CDN + SSL)
+
+```bash
+# Core services managed by systemd:
+systemctl status one-api      # Docker container
+systemctl status video-svc    # Video generation (5097)
+systemctl status rate-limiter # Rate limiter (5095)
+```
+
+---
+
+## FAQ
+
+**Q: Is this legal?**
+A: Yes. We are an authorized API relay. You pay us in tokens, we pay upstream providers.
+
+**Q: How is this different from OpenRouter?**
+A: TokenHub provides a full web playground (chat + image + video), transparent pricing with profit-margin control, and free model tiers with daily limits.
+
+**Q: Do you store my data?**
+A: No. Prompts and completions pass through in transit only. We do not log content.
+
+**Q: Can I use this in production?**
+A: Yes. Built for production workloads. Rate limiting, fail2ban, and geo-blocking are configured.
+
+---
+
+## Links
+
+| Page | URL |
+|------|-----|
+| Homepage | [t-hub.cc](https://t-hub.cc) |
+| Playground | [t-hub.cc/playground](https://t-hub.cc/playground) |
+| Pricing | [t-hub.cc/pay](https://t-hub.cc/pay) |
+| Admin | [t-hub.cc/admin](https://t-hub.cc/admin) |
+| Monitor | [t-hub.cc/monitor](https://t-hub.cc/monitor) |
+
+---
+
+MIT © TokenHub
+
+*Keywords: AI API aggregation, ChatGPT API, Claude API, DeepSeek API, AI model playground, video generation API, AI API relay, OpenAI compatible, affordable LLM API*
